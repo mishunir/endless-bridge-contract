@@ -1,0 +1,6 @@
+function withdrawToken(uint256 amount) external notPaused {
+    require(balances[msg.sender] >= amount, "Insufficient balance");
+    balances[msg.sender] -= amount;
+    bridgedToken.transfer(msg.sender, amount);
+    emit Withdrawn(msg.sender, amount);
+}
