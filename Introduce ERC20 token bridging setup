@@ -1,0 +1,5 @@
+IERC20 public bridgedToken;
+
+function setBridgedToken(address token) external onlyOwner {
+    bridgedToken = IERC20(token);
+}
