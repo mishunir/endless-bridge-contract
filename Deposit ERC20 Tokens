@@ -1,0 +1,6 @@
+function depositToken(uint256 amount) external notPaused {
+    require(amount > 0, "Amount must be > 0");
+    bridgedToken.transferFrom(msg.sender, address(this), amount);
+    balances[msg.sender] += amount;
+    emit Deposited(msg.sender, amount);
+}
