@@ -1,0 +1,7 @@
+event TransferRequested(address indexed user, uint256 amount, string targetChain);
+
+function requestTransfer(uint256 amount, string memory targetChain) external notPaused {
+    require(balances[msg.sender] >= amount, "Insufficient balance");
+    balances[msg.sender] -= amount;
+    emit TransferRequested(msg.sender, amount, targetChain);
+}
